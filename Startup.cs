@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestaurantCMS.Business.Abstract;
+using RestaurantCMS.Business.Concreate;
+using RestaurantCMS.DAL.Abstract;
+using RestaurantCMS.DAL.Concreate.MySql;
 
 namespace RestaurantCMS
 {
@@ -19,6 +23,9 @@ namespace RestaurantCMS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IDishDal, MySqlDishDal>();
+            services.AddTransient<IDishService, DishService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

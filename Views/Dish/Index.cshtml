@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Dish>
+<link rel="stylesheet" href="~/css/menu-card.css" />
+
+<h1>Menüler</h1>
+
+@foreach (var item in Model)
+{
+    <div class="mr-3 card-inline-block">
+        <div class="property-card">
+            <a href="#">
+                <div class="property-image" style=" background-image: url('@Url.Content("~/images/menu/"+item.Image+".jpg")');">
+                    <div class="property-image-title">
+                        <h5>@item.DishName</h5>
+                    </div>
+                </div>
+            </a>
+            <div class="property-description">
+                <h5 style="margin-bottom:15px;">
+                    @item.DishName <br />
+                    <span style="color:darkorange">
+                        @item.Price &#x20BA;
+                    </span>
+                </h5>
+                <p>@item.Description</p>
+            </div>
+
+        </div>
+    </div>
+}

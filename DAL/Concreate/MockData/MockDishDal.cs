@@ -15,7 +15,7 @@ namespace RestaurantCMS.DAL.Concreate.MockData
             {
                 new Dish{
                     DishId=1,
-                    CategoryId=1,
+                    Category= null,
                     DishName="Test Dish",
                     Description="Test Description",
                     Price=15.5,
@@ -25,7 +25,7 @@ namespace RestaurantCMS.DAL.Concreate.MockData
                 },
                 new Dish{
                     DishId=2,
-                    CategoryId=1,
+                    Category = null,
                     DishName="Test Dish 2",
                     Description="Test Description 2",
                     Price=15.2,
@@ -35,7 +35,7 @@ namespace RestaurantCMS.DAL.Concreate.MockData
                 },
                 new Dish{
                     DishId=3,
-                    CategoryId=1,
+                    Category= null,
                     DishName="Test Dish 3",
                     Description="Test Description 3",
                     Price=15.3,
