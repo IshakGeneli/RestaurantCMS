@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RestaurantCMS.Models.Dish>
+
+<p>
+    <a class="btn btn-success" asp-action="Add">Yeni Yemek Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Yemek İsmi
+            </th>
+            <th>
+               Açıklama
+            </th>
+            <th>
+                Yemek Resmi
+            </th>
+            <th>
+               Fiyatı
+            </th>
+            <th>
+                Değerlendirme
+            </th>
+            <th>
+                Öne Çıkarılan
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DishId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img style="max-width:100px" class="" src="@Url.Content("~/images/menu/"+item.Image)" alt="@item.Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Featured)
+            </td>
+            <td class="text-center">
+                <a class="btn btn-warning btn-sm mb-1 btn-block" href="/Dish/Update/@item.DishId">Düzenle</a>
+                <a class="btn btn-primary btn-sm mb-1 btn-block" href="/Dish/Details/@item.DishId">Detay</a>
+                <a class="btn btn-danger btn-sm mb-1 btn-block" href="/Dish/Delete/@item.DishId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -56,7 +56,7 @@ namespace RestaurantCMS.DAL.Concreate.MockData
             throw new NotImplementedException();
         }
 
-        public Dish Delete(Dish entity)
+        public Dish Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -66,7 +66,7 @@ namespace RestaurantCMS.DAL.Concreate.MockData
             throw new NotImplementedException();
         }
 
-        public Dish Get(Dish entity)
+        public Dish GetById(int id)
         {
             throw new NotImplementedException();
         }

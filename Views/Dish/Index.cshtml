@@ -1,20 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
+﻿
 @model List<Dish>
 <link rel="stylesheet" href="~/css/menu-card.css" />
 
-<h1>Menüler</h1>
+<div class="mb-4">
+    <h1 class="d-inline-block align-middle">Menüler</h1> <a class="btn btn-success ml-5" asp-controller="Dish" asp-action="List">Yönet</a>
+</div>
 
 @foreach (var item in Model)
 {
     <div class="mr-3 card-inline-block">
         <div class="property-card">
-            <a href="#">
-                <div class="property-image" style=" background-image: url('@Url.Content("~/images/menu/"+item.Image+".jpg")');">
+            <a href="/Dish/Details/@item.DishId">
+                <div class="property-image" style=" background-image: url('@Url.Content("~/images/menu/"+item.Image)');">
                     <div class="property-image-title">
                         <h5>@item.DishName</h5>
                     </div>

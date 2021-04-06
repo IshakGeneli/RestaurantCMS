@@ -1,0 +1,30 @@
+﻿
+@model List<Personel>
+
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="mb-4">
+        <h1 class="d-inline-block align-middle">Personeller</h1> <a class="btn btn-success ml-5" asp-controller="Personel" asp-action="List">Yönet</a>
+    </div>
+    <div class="row justify-content-around">
+        @foreach (var item in Model)
+        {
+            <div class="card col-md-3">
+                <img class="card-img-top" src="@Url.Content("~/images/personels/"+item.Image)" alt="@item.Image" />
+
+                <div class="card-body">
+                    <div>
+                        <h5 class="card-title d-inline-block">@item.FirstName @item.LastName</h5>
+                        <span class="badge badge-primary ml-2">@item.Title</span>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>

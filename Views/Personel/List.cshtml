@@ -1,0 +1,58 @@
+﻿@model IEnumerable<RestaurantCMS.Models.Personel>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<p>
+    <a class="btn btn-success" asp-action="Add">Yeni Personel Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+               İsim
+            </th>
+            <th>
+               Soyisim
+            </th>
+            <th>
+                Görevi
+            </th>
+            <th>
+                Resim
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonelId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <img style="max-width:100px" class="" src="@Url.Content("~/images/personels/"+item.Image)" alt="@item.Image" />
+
+            </td>
+            <td class="text-center">
+                <a class="btn btn-warning btn-sm mb-1 btn-block" href="/Personel/Update/@item.PersonelId">Düzenle</a>
+                <a class="btn btn-primary btn-sm mb-1 btn-block" href="/Personel/Details/@item.PersonelId">Detay</a>
+                <a class="btn btn-danger btn-sm mb-1 btn-block" href="/Personel/Delete/@item.PersonelId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

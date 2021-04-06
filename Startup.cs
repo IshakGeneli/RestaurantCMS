@@ -26,6 +26,10 @@ namespace RestaurantCMS
 
             services.AddTransient<IDishDal, MySqlDishDal>();
             services.AddTransient<IDishService, DishService>();
+            services.AddTransient<ICategoryDal, MySqlCategoryDal>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IPersonelDal, MySqlPersonelDal>();
+            services.AddTransient<IPersonelService, PersonelService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

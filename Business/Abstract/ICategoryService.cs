@@ -2,8 +2,7 @@
 
 namespace RestaurantCMS.Business.Abstract
 {
-    public interface IDishService : IRepositoryService<Dish>
+    public interface ICategoryService : IRepositoryService<Category>
     {
-        
     }
 }
