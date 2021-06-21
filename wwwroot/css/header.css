@@ -1,0 +1,60 @@
+﻿.card-img-top {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.image-text {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+    .image-text img {
+        width: 100%;
+    }
+
+.centered {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 5px #ff0000;
+}
+
+.justify-left {
+    color: white;
+    position: absolute;
+    top: 50%;
+    
+    transform: translate(0%, -50%);
+    text-shadow: 2px 2px 5px #ff0000;
+}
+
+.filter{
+    background-color:black;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.image-text .paragraph {
+    font-family: Lora, sans-serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+@media(max-width: 1064px){
+
+    .image-text .paragraph {
+        font-size: 16px;
+    }
+}
+@media(max-width: 945px){
+
+    .image-text .paragraph {
+        font-size: 12   px;
+    }
+}

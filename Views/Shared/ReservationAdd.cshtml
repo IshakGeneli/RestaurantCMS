@@ -1,0 +1,42 @@
+﻿@model RestaurantCMS.Models.Reservation
+
+<hr />
+<div style="min-height:1000px">
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Add" asp-controller="Reservation">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="FullName" class="control-label"></label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" value="0" maxlength="11" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Date" class="control-label">Rezervasyon Tarihi</label>
+                            <input asp-for="Date" class="form-control" />
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumPerson" class="control-label">Kişi Sayısı</label>
+                            <input asp-for="NumPerson" class="form-control" />
+                            <span asp-validation-for="NumPerson" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mr-auto">
+                    <input type="submit" value="Rezervasyon Yap" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

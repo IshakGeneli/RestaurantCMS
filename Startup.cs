@@ -23,6 +23,7 @@ namespace RestaurantCMS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddTransient<IDishDal, MySqlDishDal>();
             services.AddTransient<IDishService, DishService>();
@@ -30,6 +31,8 @@ namespace RestaurantCMS
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IPersonelDal, MySqlPersonelDal>();
             services.AddTransient<IPersonelService, PersonelService>();
+            services.AddTransient<IReservationDal, MySqlReservationDal>();
+            services.AddTransient<IReservationService, ReservationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +53,7 @@ namespace RestaurantCMS
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -57,6 +61,7 @@ namespace RestaurantCMS
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

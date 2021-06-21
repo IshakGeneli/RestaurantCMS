@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantCMS.Business.Abstract;
 using RestaurantCMS.Models;
@@ -8,6 +9,7 @@ using System.IO;
 
 namespace RestaurantCMS.Controllers
 {
+    [Authorize]
     public class PersonelController : Controller
     {
         IPersonelService personelService;

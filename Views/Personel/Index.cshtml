@@ -10,7 +10,11 @@
     </style>
 
     <div class="mb-4">
-        <h1 class="d-inline-block align-middle">Personeller</h1> <a class="btn btn-success ml-5" asp-controller="Personel" asp-action="List">Yönet</a>
+        <h1 class="d-inline-block align-middle">Personeller</h1>
+        @if (User.Identity.Name == "admin")
+        {
+            <a class="btn btn-success ml-5" asp-controller="Personel" asp-action="List">Yönet</a>
+        }
     </div>
     <div class="row justify-content-around">
         @foreach (var item in Model)
@@ -24,6 +28,10 @@
                         <span class="badge badge-primary ml-2">@item.Title</span>
                     </div>
                 </div>
+                <p>
+                    Personel Detay Metni
+                    Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek
+                </p>
             </div>
         }
 

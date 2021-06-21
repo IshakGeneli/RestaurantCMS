@@ -1,4 +1,4 @@
-﻿@model RestaurantCMS.Models.Dish
+﻿@model DishCategoryModel
 
 @{
     ViewData["Title"] = "Add";
@@ -10,40 +10,46 @@
     <div class="col-md-4">
         <form asp-action="Add" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
+
             <div class="form-group">
-                <label asp-for="DishName" class="control-label">Yemek İsmi</label>
-                <input asp-for="DishName" class="form-control" />
-                <span asp-validation-for="DishName" class="text-danger"></span>
+                <label asp-for="Dish.DishName" class="control-label">Yemek İsmi</label>
+                <input asp-for="Dish.DishName" class="form-control" />
+                <span asp-validation-for="Dish.DishName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category.CategoryId" class="control-label">Category Id</label>
-                <input asp-for="Category.CategoryId" class="form-control" />
+                <label asp-for="Dish.Category.CategoryId" class="control-label">Kategorisi</label>
+                <select class="form-control" asp-for="Dish.Category.CategoryId">
+                    <option selected disabled>Kategori Seç...</option>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select>
                 <span asp-validation-for="Category.CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Açıklama</label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Dish.Description" class="control-label">Açıklama</label>
+                <input asp-for="Dish.Description" class="form-control" />
+                <span asp-validation-for="Dish.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageFile" class="control-label">Yemek Resmi</label>
-                <input asp-for="ImageFile" accept=""/>
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                <label asp-for="Dish.ImageFile" class="control-label">Yemek Resmi</label>
+                <input asp-for="Dish.ImageFile" accept="" />
+                <span asp-validation-for="Dish.ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label">Fiyatı</label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="Dish.Price" class="control-label">Fiyatı</label>
+                <input asp-for="Dish.Price" class="form-control" />
+                <span asp-validation-for="Dish.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
+                <label asp-for="Dish.Rating" class="control-label">Derecelendirme</label>
+                <input asp-for="Dish.Rating" class="form-control" />
+                <span asp-validation-for="Dish.Rating" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Featured" /> @Html.DisplayNameFor(model => model.Featured)
+                    <input class="form-check-input" asp-for="Dish.Featured" /> Öne Çıkar
                 </label>
             </div>
             <div class="form-group">

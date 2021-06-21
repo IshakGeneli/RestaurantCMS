@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 using RestaurantCMS.DAL.Abstract;
 using RestaurantCMS.Models;
 using System;
@@ -40,7 +41,47 @@ namespace RestaurantCMS.DAL.Concreate.MySql
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            List<Category> categories = new List<Category>();
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        string sql = "SELECT * FROM Categories";
+                        command.CommandText = sql;
+
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+
+                            Category category = new Category
+                            {
+                                CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                                CategoryName = reader["CategoryName"].ToString(),
+                                Color= reader["Color"].ToString()
+                            };
+
+                            categories.Add(category);
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return categories;
         }
 
         public Category Update(Category entity)

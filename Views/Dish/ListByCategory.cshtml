@@ -1,0 +1,62 @@
+﻿@model DishCategoryModel
+
+<link rel="stylesheet" href="~/css/menu-card.css" />
+<link href="~/css/extra.css" rel="stylesheet" />
+
+<div style="min-height:1000px">
+
+
+    <div class="row">
+        <div class="col-3">
+            <div>
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <h5 class="side">Kategoriler</h5>
+                </a>
+            </div>
+            @foreach (var item in Model.Categories)
+            {
+
+                <div class="list-group">
+
+                    <a href="/Dish/ListByCategory/@item.CategoryId" class="list-group-item list-group-item-action">@item.CategoryName</a>
+
+                </div>
+            }
+        </div>
+        <div class="col-9">
+
+            <div class="mb-2">
+                <h1 class="d-inline-block align-middle">Menüler</h1>
+                @if (User.Identity.Name == "admin")
+                {
+                    <a class="btn btn-success ml-5" asp-controller="Dish" asp-action="List">Yönet</a>
+                }
+            </div>
+            @foreach (var item in Model.Dishes)
+            {
+                <div class="mr-3 card-inline-block">
+                    <div class="property-card">
+                        <a href="/Dish/Details/@item.DishId">
+                            <div class="property-image" style=" background-image: url('@Url.Content("~/images/menu/"+item.Image)');">
+                                <div class="property-image-title">
+                                    <h5>@item.DishName</h5>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="property-description">
+                            <h5 style="margin-bottom:15px;">
+                                @item.DishName <br />
+                                <span style="color:darkorange">
+                                    @item.Price &#x20BA;
+                                </span>
+                            </h5>
+                            <p>@item.Description</p>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

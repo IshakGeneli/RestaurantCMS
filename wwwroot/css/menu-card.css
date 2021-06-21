@@ -79,7 +79,7 @@ position:Relative;
 top:30%;
 opacity:0;
 transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
-color:black;
+color:white;
 font-size:1.2em;
 }
 

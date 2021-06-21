@@ -27,7 +27,7 @@ namespace RestaurantCMS.Business.Concreate
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+           return _categoryDal.GetAll();
         }
 
         public Category GetById(int id)

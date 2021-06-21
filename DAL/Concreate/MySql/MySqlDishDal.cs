@@ -249,5 +249,120 @@ namespace RestaurantCMS.DAL.Concreate.MySql
         {
             throw new NotImplementedException();
         }
+
+        public List<Dish> GetByCategoryId(int categoryId)
+        {
+            List<Dish> dishes = new List<Dish>();
+
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        string sql = "SELECT C.*,D.* FROM Dishes D JOIN Categories C ON C.CategoryId = D.CategoryId WHERE D.CategoryId = @categoryId";
+                        command.Parameters.AddWithValue("@categoryId", categoryId);
+                        command.CommandText = sql;
+
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Category category = new Category
+                            {
+                                CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                                CategoryName = reader["CategoryName"].ToString(),
+                                Color = reader["Color"].ToString()
+                            };
+
+                           Dish dish = new Dish
+                            {
+                                DishId = Convert.ToInt32(reader["DishId"]),
+                                Category = category,
+                                DishName = reader["DishName"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Image = reader["Image"].ToString(),
+                                Price = Convert.ToDouble(reader["Price"]),
+                                Rating = Convert.ToInt16(reader["Rating"]),
+                                Featured = reader.GetBoolean(reader.GetOrdinal("Featured"))
+                            };
+
+                            dishes.Add(dish);
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return dishes;
+        }
+
+        public List<Dish> GetByFeaturedItem()
+        {
+            List<Dish> dishes = new List<Dish>();
+
+
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = connection.CreateCommand())
+                    {
+                        string sql = "SELECT C.*,D.* FROM Dishes D JOIN Categories C ON C.CategoryId = D.CategoryId WHERE D.Featured = 1";
+                        command.CommandText = sql;
+
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Category category = new Category
+                            {
+                                CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                                CategoryName = reader["CategoryName"].ToString(),
+                                Color = reader["Color"].ToString()
+                            };
+
+                            Dish dish = new Dish
+                            {
+                                DishId = Convert.ToInt32(reader["DishId"]),
+                                Category = category,
+                                DishName = reader["DishName"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Image = reader["Image"].ToString(),
+                                Price = Convert.ToDouble(reader["Price"]),
+                                Rating = Convert.ToInt16(reader["Rating"]),
+                                Featured = reader.GetBoolean(reader.GetOrdinal("Featured"))
+                            };
+
+                            dishes.Add(dish);
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return dishes;
+        }
     }
 }

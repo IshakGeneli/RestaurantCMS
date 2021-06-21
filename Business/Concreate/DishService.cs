@@ -37,5 +37,15 @@ namespace RestaurantCMS.Business.Concreate
         {
             return _dishDal.Delete(id);
         }
+
+        public List<Dish> GetByCategoryId(int categoryId)
+        {
+            return _dishDal.GetByCategoryId(categoryId);
+        }
+
+        public List<Dish> GetByFeaturedItem()
+        {
+            return _dishDal.GetByFeaturedItem();
+        }
     }
 }

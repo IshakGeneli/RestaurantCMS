@@ -6,6 +6,24 @@
 
 @model Dish
 
-<div>
-    <img class="" src="@Url.Content("~/images/menu/"+Model.Image)" alt="@Model.Image" />
+<div class="row">
+    <div class="col-6">
+        <img class="" src="@Url.Content("~/images/menu/"+Model.Image)" alt="@Model.Image" />
+    </div>
+    <div class="col-6">
+        <div class="row mb-2">
+            <div class="col-6">
+                <img class="" src="@Url.Content("~/images/menu/"+Model.Image)" alt="@Model.Image" />
+            </div>
+            <div class="col-6">@Model.Description</div>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <img class="" src="@Url.Content("~/images/menu/"+Model.Image)" alt="@Model.Image" />
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </div>
 </div>
+<div class="row" style="height: 1000px;"></div>

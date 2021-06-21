@@ -85,5 +85,15 @@ namespace RestaurantCMS.DAL.Concreate.MockData
         {
             throw new NotImplementedException();
         }
+
+        public List<Dish> GetByCategoryId(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Dish> GetByFeaturedItem()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
